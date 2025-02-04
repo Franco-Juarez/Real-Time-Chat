@@ -1,0 +1,132 @@
+/* Variables y Reset */
+:root {
+  --primary-bg: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  --chat-bg: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  --message-sent-bg: #DCF8C6;
+  --message-received-bg: #FFFFFF;
+  --text-color: #181818;
+  --border-color: #c1dfc4;
+  --font-family: "Geist", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+body {
+  background-image: var(--primary-bg);
+}
+
+.chat-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  max-width: 450px;
+  height: 100dvh;
+  place-content: center;
+  gap: 20px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-top: 10px;
+  }
+}
+
+.chat-container {
+  border-radius: 8px;
+  max-width: 350px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-image: var(--chat-bg);
+  width: 100%;
+  padding: 10px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+
+    li {
+      list-style: none;
+      padding: 10px;
+      border-radius: 12px;
+      max-width: 70%;
+      word-wrap: break-word;
+      background-color: var(--message-received-bg);
+
+      small {
+        text-transform: capitalize;
+      }
+
+      &.message-sent {
+        background-color: var(--message-sent-bg);
+        margin-left: auto;
+        text-align: right;
+      }
+
+      &.message-received {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.chat {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding-bottom: 10px;
+
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 8px 20px;
+    border: none;
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-wrapper {
+    max-width: 100%;
+  }
+
+  .chat-container {
+    max-width: 100%;
+  }
+
+  .chat {
+    flex-direction: column;
+    gap: 10px;
+
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+}
